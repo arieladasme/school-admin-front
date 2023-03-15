@@ -27,7 +27,7 @@ export const authSlice = createSlice({
       state.roles = payload.roles
       state.rut = payload.rut
       state.photoURL = payload.photoURL
-      state.errorMessage = payload.errorMessage
+      state.errorMsg = payload.errorMsg
     },
     logout: (state, { payload }) => {
       state.status = 'not-auth' // 'checking', 'auth'

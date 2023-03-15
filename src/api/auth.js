@@ -5,7 +5,6 @@ export const loginUser = async data => {
     const resp = await axiosConfig.post('/auth/login', data)
     return { ok: true, resp: resp.data }
   } catch (error) {
-    console.log('ERROR', error)
-    return { ok: false, errorMsg: error.message }
+    return { ok: false, errorMsg: error.response.data.message }
   }
 }

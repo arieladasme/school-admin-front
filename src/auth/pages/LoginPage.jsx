@@ -7,7 +7,7 @@ import { startLogin } from '../../store/auth'
 
 export const LoginPage = () => {
   // obtengo datos del store
-  const { status, errorMessage } = useSelector(state => state.auth)
+  const { status, errorMsg } = useSelector(state => state.auth)
   const dispatch = useDispatch()
   const { email, password, onInputChange } = useForm({
     email: '',
@@ -64,9 +64,9 @@ export const LoginPage = () => {
                 onChange={onInputChange}
               />
             </Grid>
-            <Grid container display={!!false ? '' : 'none'} sx={{ mt: 1 }}>
+            <Grid container display={!!errorMsg ? '' : 'none'} sx={{ mt: 1 }}>
               <Grid item xs={12}>
-                <Alert severity="error">error</Alert>
+                <Alert severity="error">{errorMsg}</Alert>
               </Grid>
             </Grid>
             <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
