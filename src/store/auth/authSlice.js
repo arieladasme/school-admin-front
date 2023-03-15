@@ -6,16 +6,26 @@ export const authSlice = createSlice({
     status: 'not-auth', // 'checking', 'auth'
     userId: null,
     email: null,
-    displayName: null,
+    name: null,
+    lastName: null,
+    middleName: null,
+    secondLastName: null,
+    roles: null,
+    rut: null,
     photoURL: null,
     errorMsg: null,
   },
   reducers: {
     login: (state, { payload }) => {
       state.status = 'auth'
-      state.uid = payload.uid
+      state.userId = payload.id
       state.email = payload.email
-      state.displayName = payload.displayName
+      state.name = payload.name
+      state.lastName = payload.lastName
+      state.middleName = payload.middleName
+      state.secondLastName = payload.secondLastName
+      state.roles = payload.roles
+      state.rut = payload.rut
       state.photoURL = payload.photoURL
       state.errorMessage = payload.errorMessage
     },
@@ -23,7 +33,12 @@ export const authSlice = createSlice({
       state.status = 'not-auth' // 'checking', 'auth'
       state.userId = null
       state.email = null
-      state.displayName = null
+      state.name = null
+      state.lastName = null
+      state.middleName = null
+      state.secondLastName = null
+      state.roles = null
+      state.rut = null
       state.photoURL = null
       state.errorMsg = payload
     },

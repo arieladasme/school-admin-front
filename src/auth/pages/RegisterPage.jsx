@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks'
+import { registerUsers } from '../../api/user'
 //import { startCreatingUserWithEmailPassword } from '../../store/auth'
 
 const formData = {
@@ -32,12 +33,18 @@ export const RegisterPage = () => {
     passwordValid,
   } = useForm(formData, formValidations)
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault()
-    console.log(formState)
+
     setFormSubmitted(true)
 
     if (!isFormValid) return
+
+    const register = await registerUsers(formState)
+
+    console.log(register)
+
+    /* dispatch(startCreatingUserWithEmailPassword(formState)) */
   }
 
   return (
