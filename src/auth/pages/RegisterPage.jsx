@@ -42,8 +42,6 @@ export const RegisterPage = () => {
 
     const register = await registerUsers(formState)
 
-    console.log(register)
-
     /* dispatch(startCreatingUserWithEmailPassword(formState)) */
   }
 

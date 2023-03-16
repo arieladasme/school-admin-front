@@ -1,7 +1,7 @@
-import { axiosConfig } from './config'
+import { schoolAdminApi } from './'
 
 export const getAllUsers = async () => {
-  const response = await axiosConfig.get('/users')
+  const response = await schoolAdminApi.get('/users')
   return response.data
 }
 
@@ -9,7 +9,7 @@ export const registerUsers = async data => {
   const { displayName, email } = data
 
   try {
-    const response = await axiosConfig.post('/auth/register', {
+    const response = await schoolAdminApi.post('/auth/register', {
       name: displayName,
       lastName: 'TestName',
       email,
