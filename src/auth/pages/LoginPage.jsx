@@ -2,13 +2,13 @@ import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Grid, Typography, TextField, Alert, Button, Link } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import { useForm } from '../../hooks'
-import { startLogin } from '../../store/auth'
+import { useAuthStore, useForm } from '../../hooks'
 
 export const LoginPage = () => {
   // obtengo datos del store
   const { status, errorMsg } = useSelector(state => state.auth)
   const dispatch = useDispatch()
+  const { startLogin } = useAuthStore()
   const { email, password, onInputChange } = useForm({
     email: '',
     password: '',

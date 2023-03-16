@@ -7,6 +7,6 @@ export const schoolAdminApi = axios.create({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    'x-token': localStorage.getItem('token'),
+    auth: localStorage.getItem('token'),
   },
 })
