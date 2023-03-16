@@ -19,7 +19,8 @@ export const startLogin = data => {
 
 export const startLogout = () => {
   return async dispatch => {
-    //TODO: Elimiar JWT del localStorage
+    localStorage.clear()
+
     dispatch(logout())
   }
 }
