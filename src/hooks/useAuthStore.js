@@ -44,7 +44,7 @@ export const useAuthStore = () => {
       const { data } = await schoolAdminApi.get('auth/refresh-token')
       localStorage.setItem('token', data)
       localStorage.setItem('token-init-date', new Date().getTime())
-      // dispatch(login(data))
+      dispatch(login(data))
     } catch (error) {
       localStorage.clear()
       dispatch(logout())

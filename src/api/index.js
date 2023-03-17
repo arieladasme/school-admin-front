@@ -1,1 +1,1 @@
-export * from './schoolAdminApi'
+export { default as schoolAdminApi } from './schoolAdminApi'
