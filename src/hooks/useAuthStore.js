@@ -29,11 +29,8 @@ export const useAuthStore = () => {
   }
 
   const startLogout = () => {
-    return async dispatch => {
-      localStorage.clear()
-
-      dispatch(logout())
-    }
+    localStorage.clear()
+    dispatch(logout())
   }
 
   const checkAuthToken = async () => {

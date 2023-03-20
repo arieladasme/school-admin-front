@@ -1,4 +1,4 @@
-import { TurnedInNot } from '@mui/icons-material'
+import { AccessAlarm, MenuBook } from '@mui/icons-material'
 import {
   Drawer,
   Box,
@@ -31,17 +31,14 @@ export const SideBar = ({ drawerWidth = 240 }) => {
         </Toolbar>
         <Divider />
         <List>
-          {['Enero', 'Feb', 'Mar', 'abr'].map(text => (
+          {['Asignaturas', 'Asistencia', 'Perfil', 'Usuarios'].map(text => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <TurnedInNot />
+                  <MenuBook />
                 </ListItemIcon>
                 <Grid container>
                   <ListItemText primary={text} />
-                  <ListItemText
-                    secondary={'Lorem ipsum, dolor sit amet consectetur adipisicing elit'}
-                  />
                 </Grid>
               </ListItemButton>
             </ListItem>
