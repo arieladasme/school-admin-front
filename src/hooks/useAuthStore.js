@@ -6,19 +6,19 @@ export const useAuthStore = () => {
   const { status, user, errorMessage } = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
-  const checkAuth = (email, password) => {
-    return async dispatch => {
-      dispatch(checkingCredentials())
-    }
-  }
-
   const startLogin = body => {
     return async dispatch => {
       dispatch(checkingCredentials())
 
       try {
         const { data } = await schoolAdminApi.post('/auth/login', body)
-        localStorage.setItem('token', data.token)
+        const token = data.token
+        delete data.token
+        const user = data
+        const userString = JSON.stringify(user)
+
+        localStorage.setItem('user', userString)
+        localStorage.setItem('token', token)
         localStorage.setItem('token-init-date', new Date().getTime())
 
         dispatch(login(data))
@@ -41,7 +41,10 @@ export const useAuthStore = () => {
       const { data } = await schoolAdminApi.get('auth/refresh-token')
       localStorage.setItem('token', data)
       localStorage.setItem('token-init-date', new Date().getTime())
-      dispatch(login(data))
+
+      const user = JSON.parse(localStorage.getItem('user'))
+
+      dispatch(login({ ...user, token: data }))
     } catch (error) {
       localStorage.clear()
       dispatch(logout())
@@ -55,7 +58,6 @@ export const useAuthStore = () => {
     errorMessage,
     // metodos
     startLogin,
-    checkAuth,
     checkAuthToken,
     startLogout,
   }

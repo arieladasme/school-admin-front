@@ -10,8 +10,8 @@ export const LoginPage = () => {
   const dispatch = useDispatch()
   const { startLogin } = useAuthStore()
   const { email, password, onInputChange } = useForm({
-    email: '',
-    password: '',
+    email: 'admin@admin.com',
+    password: '123Gks',
   })
 
   // memorizo status

@@ -42,6 +42,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:18.2.0"],\
             ["react-redux", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:8.0.5"],\
             ["react-router-dom", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:6.9.0"],\
+            ["redux", "npm:4.2.1"],\
+            ["redux-persist", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:6.0.0"],\
             ["vite", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:4.1.4"]\
           ],\
           "linkType": "SOFT"\
@@ -2807,7 +2809,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
             ["react-native", null],\
-            ["redux", null],\
+            ["redux", "npm:4.2.1"],\
             ["use-sync-external-store", "virtual:76a767f066989e64805f6b957202f2e6812c61fbcb99cacdade42cb89804fb38442c76090699f869f4bb800c16343cc4671f25672df1d60cd8a7e7a0d192d600#npm:1.2.0"]\
           ],\
           "packagePeers": [\
@@ -2931,6 +2933,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["redux", "npm:4.2.1"],\
             ["@babel/runtime", "npm:7.21.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["redux-persist", [\
+        ["npm:6.0.0", {\
+          "packageLocation": "./.yarn/cache/redux-persist-npm-6.0.0-56dad69feb-edaf10dbf1.zip/node_modules/redux-persist/",\
+          "packageDependencies": [\
+            ["redux-persist", "npm:6.0.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:6.0.0", {\
+          "packageLocation": "./.yarn/__virtual__/redux-persist-virtual-a5119369e1/0/cache/redux-persist-npm-6.0.0-56dad69feb-edaf10dbf1.zip/node_modules/redux-persist/",\
+          "packageDependencies": [\
+            ["redux-persist", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:6.0.0"],\
+            ["@types/react", "npm:18.0.28"],\
+            ["@types/redux", null],\
+            ["react", "npm:18.2.0"],\
+            ["redux", "npm:4.2.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "@types/redux",\
+            "react",\
+            "redux"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3072,6 +3100,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:18.2.0"],\
             ["react-redux", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:8.0.5"],\
             ["react-router-dom", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:6.9.0"],\
+            ["redux", "npm:4.2.1"],\
+            ["redux-persist", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:6.0.0"],\
             ["vite", "virtual:f1f64a8f88a9296589420e56763cb3fef8c81330a7f1111607d52bb5a211817a4eca0227e82e3b9119dd3ed79a996e8f88ef4eeb570cad0740befb8cd5e13305#npm:4.1.4"]\
           ],\
           "linkType": "SOFT"\
