@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { Table, TableBody, TableContainer, Button } from '@mui/material'
 import { Add as AddIcon } from '@mui/icons-material'
-import { ModalUser } from './users/ModalUser'
-import { TableHeadUser } from './users/TableHeadUser'
-import { TableRowsUser } from './users/TableRowsUser'
+import { ModalUser, TableHeadUser, TableRowsUser } from './users/'
 
 const usersData = [
   { id: 1, name: 'Juan', email: 'juan@test.com' },
