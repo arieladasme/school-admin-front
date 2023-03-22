@@ -12,5 +12,8 @@ export const purpleTheme = createTheme({
     error: {
       main: red.A400,
     },
+    tableUser: {
+      minWidth: 650,
+    },
   },
 })
