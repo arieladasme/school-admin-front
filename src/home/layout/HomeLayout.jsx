@@ -1,7 +1,6 @@
 import { Box } from '@mui/system'
 import { Toolbar } from '@mui/material'
-
-import { NavBar, SideBar } from '../components'
+import { SideBar, NavBar } from '../../ui/components'
 
 const drawerWidth = 240
 

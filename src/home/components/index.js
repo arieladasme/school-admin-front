@@ -1,2 +1,4 @@
-export * from './NavBar'
-export * from './SideBar'
+export * from './Attendance'
+export * from './Subjects'
+export * from './Perfil'
+export * from './Users'

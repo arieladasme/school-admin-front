@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { HomeRoutes } from '../home/routes/HomeRoutes'
 import { useAuthStore } from '../hooks'
 import { LoginPage } from '../auth/pages'
-
 export const AppRouter = () => {
   const { status, checkAuthToken } = useAuthStore()
 

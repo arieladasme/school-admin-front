@@ -1,4 +1,4 @@
-import { AccessAlarm, MenuBook } from '@mui/icons-material'
+import { MenuBook } from '@mui/icons-material'
 import {
   Drawer,
   Box,
@@ -13,6 +13,14 @@ import {
   Grid,
 } from '@mui/material'
 import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+
+const listMenu = [
+  { text: 'Asignaturas', link: '/subjects' },
+  { text: 'Attendance', link: '/attendance' },
+  { text: 'Perfil', link: '/perfil' },
+  { text: 'Usuarios', link: '/users' },
+]
 
 export const SideBar = ({ drawerWidth = 240 }) => {
   const { user } = useSelector(state => state.auth)
@@ -34,16 +42,18 @@ export const SideBar = ({ drawerWidth = 240 }) => {
         </Toolbar>
         <Divider />
         <List>
-          {['Asignaturas', 'Asistencia', 'Perfil', 'Usuarios'].map(text => (
+          {listMenu.map(({ text, link }) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <MenuBook />
-                </ListItemIcon>
-                <Grid container>
-                  <ListItemText primary={text} />
-                </Grid>
-              </ListItemButton>
+              <NavLink to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <MenuBook />
+                  </ListItemIcon>
+                  <Grid container>
+                    <ListItemText primary={text} />
+                  </Grid>
+                </ListItemButton>
+              </NavLink>
             </ListItem>
           ))}
         </List>
