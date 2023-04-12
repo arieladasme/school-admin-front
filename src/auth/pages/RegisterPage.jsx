@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks'
-import { registerUsers } from '../../api/user'
+import { registerUsers } from '../../api/users'
 //import { startCreatingUserWithEmailPassword } from '../../store/auth'
 
 const formData = {

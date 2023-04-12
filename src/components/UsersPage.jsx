@@ -4,8 +4,26 @@ import { Add as AddIcon } from '@mui/icons-material'
 import { ModalUser, TableHeadUser, TableRowsUser } from './users/'
 
 const usersData = [
-  { id: 1, name: 'Juan', email: 'juan@test.com' },
-  { id: 2, name: 'Maria', email: 'maria@test.com' },
+  {
+    id: 1,
+    name: 'Juan',
+    middleName: 'Juanin',
+    lastName: 'Apellidon',
+    secondLastName: 'Segundon',
+    email: 'juan@test.com',
+    rut: 1777777,
+    rol: 1,
+  },
+  {
+    id: 2,
+    name: 'Juana',
+    middleName: 'Juanina',
+    lastName: 'Apellidona',
+    secondLastName: 'Segundona',
+    email: 'juana@test.com',
+    rut: 1777778,
+    rol: 2,
+  },
 ]
 
 export const UsersPage = () => {
@@ -28,10 +46,16 @@ export const UsersPage = () => {
 
   const handleEditButtonClick = id => {
     const userToEdit = users.find(user => user.id === id)
+
     if (userToEdit) {
       setFormValues({
         name: userToEdit.name,
+        middleName: userToEdit.middleName,
+        lastName: userToEdit.lastName,
+        secondLastName: userToEdit.secondLastName,
         email: userToEdit.email,
+        rut: userToEdit.rut,
+        rol: userToEdit.rol,
       })
       setEditingId(id)
       setOpen(true)

@@ -1,4 +1,4 @@
-import { schoolAdminApi } from './'
+import { schoolAdminApi } from '.'
 
 export const getAllUsers = async () => {
   const response = await schoolAdminApi.get('/users')
