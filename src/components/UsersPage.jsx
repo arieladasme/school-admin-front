@@ -1,39 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Table, TableBody, TableContainer, Button } from '@mui/material'
 import { Add as AddIcon } from '@mui/icons-material'
 import { ModalUser, TableHeadUser, TableRowsUser } from './users/'
-
-const usersData = [
-  {
-    id: 1,
-    name: 'Juan',
-    middleName: 'Juanin',
-    lastName: 'Apellidon',
-    secondLastName: 'Segundon',
-    email: 'juan@test.com',
-    rut: 1777777,
-    rol: 1,
-  },
-  {
-    id: 2,
-    name: 'Juana',
-    middleName: 'Juanina',
-    lastName: 'Apellidona',
-    secondLastName: 'Segundona',
-    email: 'juana@test.com',
-    rut: 1777778,
-    rol: 2,
-  },
-]
+import { useUsersStore } from '../hooks/useUsersStore'
 
 export const UsersPage = () => {
-  const [users, setUsers] = useState(usersData)
   const [open, setOpen] = useState(false)
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
   })
   const [editingId, setEditingId] = useState(null)
+  const { users, getAllUsers } = useUsersStore()
+
+  useEffect(() => {
+    if (users.length === 0) getAllUsers()
+  }, [])
 
   const handleAddButtonClick = () => {
     setFormValues({
