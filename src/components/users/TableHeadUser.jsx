@@ -4,10 +4,11 @@ export const TableHeadUser = () => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell>ID</TableCell>
-        <TableCell>Name</TableCell>
+        <TableCell>RUT</TableCell>
+        <TableCell>Nombre</TableCell>
         <TableCell>Email</TableCell>
-        <TableCell>Actions</TableCell>
+        <TableCell>Rol</TableCell>
+        <TableCell>Acciones</TableCell>
       </TableRow>
     </TableHead>
   )
