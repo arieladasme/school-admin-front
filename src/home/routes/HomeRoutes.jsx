@@ -1,8 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { UsersPage } from '../../components/UsersPage'
-import { Perfil, Subjects, Attendance } from '../components/'
+import { UsersPage, CoursesPage } from '../../components'
+import { Perfil, Attendance } from '../components'
 import { HomeLayout } from '../layout/HomeLayout'
 import { HomePage } from '../pages/HomePage'
+import { Subjects } from '../../components'
 
 export const HomeRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const HomeRoutes = () => {
         <Route path="/users" element={<UsersPage />} />
         <Route path="/attendance" element={<Attendance />} />
         <Route path="/subjects" element={<Subjects />} />
+        <Route path="/courses" element={<CoursesPage />} />
       </Routes>
     </HomeLayout>
   )

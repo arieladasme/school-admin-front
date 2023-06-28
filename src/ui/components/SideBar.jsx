@@ -17,7 +17,8 @@ import { NavLink } from 'react-router-dom'
 
 const listMenu = [
   { text: 'Asignaturas', link: '/subjects' },
-  { text: 'Attendance', link: '/attendance' },
+  { text: 'Cursos', link: '/courses' },
+  { text: 'Asistencia', link: '/attendance' },
   { text: 'Perfil', link: '/perfil' },
   { text: 'Usuarios', link: '/users' },
 ]

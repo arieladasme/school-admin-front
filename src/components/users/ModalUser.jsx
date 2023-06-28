@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Modal, TextField, Box, Grid, Autocomplete } from '@mui/material'
 
 const style = {
@@ -106,10 +105,10 @@ export const ModalUser = ({
             type="submit"
             disabled={!formValues.name || !formValues.email}
           >
-            {editingId ? 'Save Changes' : 'Add User'}
+            {editingId ? 'Save Changes' : 'Guardar usuario'}
           </Button>
           <Button variant="contained" color="secondary" onClick={handleClose}>
-            Cancel
+            Cancelar
           </Button>
         </form>
       </Box>

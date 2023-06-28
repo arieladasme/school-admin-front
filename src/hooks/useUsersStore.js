@@ -17,11 +17,23 @@ export const useUsersStore = () => {
     }
   }
 
+  const createUser = async () => {
+    try {
+      const { data } = await schoolAdminApi.post('users/create')
+
+      dispatch(loadUsers(data))
+    } catch (error) {
+      console.log(error)
+      //dispatch(logout())
+    }
+  }
+
   return {
     // propiedades
     users,
     // metodos
 
     getAllUsers,
+    createUser,
   }
 }
