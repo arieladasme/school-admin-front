@@ -89,16 +89,16 @@ export const UsersPage = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <div sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<AddIcon />}
-          onClick={handleAddButtonClick}
-        >
-          Add User
-        </Button>
-      </div>
+
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={<AddIcon />}
+        onClick={handleAddButtonClick}
+      >
+        Crear usuario
+      </Button>
+
       <ModalUser
         {...{ handleClose, handleSubmit, formValues, handleFormValueChange, editingId, open }}
       />
