@@ -41,8 +41,9 @@ export const UsersPage = () => {
         secondLastName: userToEdit.secondLastName,
         email: userToEdit.email,
         rut: userToEdit.rut,
-        rol: userToEdit.rol,
+        role: userToEdit.role,
       })
+
       setEditingId(id)
       setOpen(true)
     }

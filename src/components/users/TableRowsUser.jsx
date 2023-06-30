@@ -2,7 +2,7 @@ import { TableCell, TableRow, IconButton } from '@mui/material'
 import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material'
 
 export const TableRowsUser = ({ handleEditButtonClick, handleDeleteButtonClick, user }) => {
-  const { rut, name, middleName, lastName, secondLastName, email, roles } = user
+  const { id, rut, name, middleName, lastName, secondLastName, email, role } = user
 
   return (
     <TableRow>
@@ -11,7 +11,7 @@ export const TableRowsUser = ({ handleEditButtonClick, handleDeleteButtonClick, 
         {name} {middleName} {lastName} {secondLastName}
       </TableCell>
       <TableCell>{email}</TableCell>
-      <TableCell>{roles}</TableCell>
+      <TableCell>{role}</TableCell>
       <TableCell>
         <IconButton aria-label="edit" onClick={() => handleEditButtonClick(id)}>
           <EditIcon />

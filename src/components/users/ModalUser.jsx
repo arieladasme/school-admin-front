@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Button,
   Modal,
@@ -23,12 +22,6 @@ const style = {
   p: 2,
 }
 
-const roles = [
-  { label: 'Estudiante', id: 'student' },
-  { label: 'Docente', id: 'teacher' },
-  { label: 'Admin', id: 'admin' }, // TODO: solo debe estar con el perfil admin
-]
-
 export const ModalUser = ({
   handleClose,
   handleSubmit,
@@ -38,10 +31,7 @@ export const ModalUser = ({
   open,
   errMsg,
 }) => {
-  const [role, setRole] = useState('')
-
   const handleChangeRol = event => {
-    setRole(event.target.value)
     handleFormValueChange(event)
   }
 
@@ -106,15 +96,15 @@ export const ModalUser = ({
               />
             </Grid>
             <Grid item xs={16}>
-              <RadioGroup name="role" value={role} defaultValue="admin" onChange={handleChangeRol}>
-                {roles.map(role => (
-                  <FormControlLabel
-                    key={role.id}
-                    value={role.id}
-                    control={<Radio />}
-                    label={role.label}
-                  />
-                ))}
+              <RadioGroup
+                defaultValue={editingId ? formValues.role : 'student'}
+                name="role"
+                value={formValues.role}
+                onChange={handleChangeRol}
+              >
+                <FormControlLabel value="student" control={<Radio />} label="Estudiante" />
+                <FormControlLabel value="teacher" control={<Radio />} label="Docente" />
+                <FormControlLabel value="admin" control={<Radio />} label="Admin" />
               </RadioGroup>
             </Grid>
           </Grid>
