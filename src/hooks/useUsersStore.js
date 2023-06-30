@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { schoolAdminApi } from '../api'
-import { loadUsers } from '../store/users/usersSlice'
+import { addUser, loadUsers, loadError } from '../store/users/usersSlice'
 
 export const useUsersStore = () => {
   const { users } = useSelector(state => state.users)
@@ -13,18 +13,16 @@ export const useUsersStore = () => {
       dispatch(loadUsers(data))
     } catch (error) {
       console.log(error)
-      //dispatch(logout())
     }
   }
 
-  const createUser = async () => {
+  const createUser = async user => {
     try {
-      const { data } = await schoolAdminApi.post('users/create')
-
-      dispatch(loadUsers(data))
+      const { data } = await schoolAdminApi.post('users', user)
+      dispatch(addUser(data))
     } catch (error) {
+      dispatch(loadError(error.response.data.message))
       console.log(error)
-      //dispatch(logout())
     }
   }
 

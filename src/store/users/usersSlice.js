@@ -4,16 +4,23 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     users: [],
+    waitingResponse: false,
+    errMsg: '',
   },
   reducers: {
     loadUsers: (state, { payload = [] }) => {
       state.users = payload
     },
-    createUser: (state, { payload }) => {
+    addUser: (state, { payload }) => {
       state.users.push(payload)
+    },
+    waitingResponseReducer: (state, { payload }) => {
+      state.waitingResponse = payload
+    },
+    loadError: (state, { payload }) => {
+      state.errMsg = payload
     },
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { loadUsers, createUser } = usersSlice.actions
+export const { loadUsers, addUser, waitingResponseReducer, loadError } = usersSlice.actions

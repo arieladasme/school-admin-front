@@ -1,4 +1,15 @@
-import { Button, Modal, TextField, Box, Grid, Autocomplete } from '@mui/material'
+import { useState } from 'react'
+import {
+  Button,
+  Modal,
+  TextField,
+  Box,
+  Grid,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+  Alert,
+} from '@mui/material'
 
 const style = {
   position: 'absolute',
@@ -12,10 +23,10 @@ const style = {
   p: 2,
 }
 
-const options = [
-  { label: 'Estudiante', id: 1 },
-  { label: 'Docente', id: 2 },
-  { label: 'Admin', id: 3 }, // TODO: solo debe estar con el perfil admin
+const roles = [
+  { label: 'Estudiante', id: 'student' },
+  { label: 'Docente', id: 'teacher' },
+  { label: 'Admin', id: 'admin' }, // TODO: solo debe estar con el perfil admin
 ]
 
 export const ModalUser = ({
@@ -25,7 +36,15 @@ export const ModalUser = ({
   handleFormValueChange,
   editingId,
   open,
+  errMsg,
 }) => {
+  const [role, setRole] = useState('')
+
+  const handleChangeRol = event => {
+    setRole(event.target.value)
+    handleFormValueChange(event)
+  }
+
   return (
     <Modal
       open={open}
@@ -81,24 +100,29 @@ export const ModalUser = ({
               <TextField
                 label="Rut"
                 name="rut"
+                type="number"
                 value={formValues.rut}
                 onChange={handleFormValueChange}
               />
             </Grid>
-            <Grid item xs={8}>
-              <Autocomplete
-                disablePortal
-                id="rol"
-                options={options}
-                sx={{ width: 300 }}
-                renderInput={params => <TextField {...params} name="rol" label="Rol" />}
-                onChange={(event, value) => handleFormValueChange(event, value.id)}
-                value={options.find(option => option.id === formValues.rol) || null}
-                isOptionEqualToValue={(option, value) => option.id === value}
-              />
+            <Grid item xs={16}>
+              <RadioGroup name="role" value={role} defaultValue="admin" onChange={handleChangeRol}>
+                {roles.map(role => (
+                  <FormControlLabel
+                    key={role.id}
+                    value={role.id}
+                    control={<Radio />}
+                    label={role.label}
+                  />
+                ))}
+              </RadioGroup>
             </Grid>
           </Grid>
-
+          <Grid container display={!!errMsg ? '' : 'none'} sx={{ mt: 1 }}>
+            <Grid item xs={12}>
+              <Alert severity="error">{errMsg}</Alert>
+            </Grid>
+          </Grid>
           <Button
             variant="contained"
             color="primary"

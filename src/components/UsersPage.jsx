@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+
 import { Table, TableBody, TableContainer, Button } from '@mui/material'
 import { Add as AddIcon } from '@mui/icons-material'
 import { ModalUser, TableHeadUser, TableRowsUser } from './users/'
 import { useUsersStore } from '../hooks/useUsersStore'
 
 export const UsersPage = () => {
+  const { errMsg } = useSelector(state => state.users)
   const [open, setOpen] = useState(false)
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
   })
+
   const [editingId, setEditingId] = useState(null)
-  const { users, getAllUsers } = useUsersStore()
+  const { users, getAllUsers, createUser } = useUsersStore()
 
   useEffect(() => {
     if (users.length === 0) getAllUsers()
@@ -58,16 +62,11 @@ export const UsersPage = () => {
   const handleSubmit = event => {
     event.preventDefault()
     if (!editingId) {
-      const newId = Math.max(...users.map(user => user.id)) + 1
-      setUsers([
-        ...users,
-        {
-          id: newId,
-          ...formValues,
-        },
-      ])
+      // convierto rut a entero
+      formValues.rut = parseInt(formValues.rut)
+      createUser(formValues)
     } else {
-      setUsers(users.map(user => (user.id === editingId ? { ...user, ...formValues } : user)))
+      // editUser() //TODO: pendiente
     }
     handleClose()
   }
@@ -100,7 +99,15 @@ export const UsersPage = () => {
       </Button>
 
       <ModalUser
-        {...{ handleClose, handleSubmit, formValues, handleFormValueChange, editingId, open }}
+        {...{
+          handleClose,
+          handleSubmit,
+          formValues,
+          handleFormValueChange,
+          editingId,
+          open,
+          errMsg,
+        }}
       />
     </>
   )
