@@ -1,6 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { schoolAdminApi } from '../api'
-import { addUser, loadUsers, loadError, editUserReducer } from '../store/users/usersSlice'
+import {
+  addUser,
+  loadUsers,
+  loadError,
+  editUserReducer,
+  deleteUserReducer,
+} from '../store/users/usersSlice'
 
 export const useUsersStore = () => {
   const { users } = useSelector(state => state.users)
@@ -54,9 +60,9 @@ export const useUsersStore = () => {
   // Eliminar usuario
   const deleteUser = async id => {
     try {
-      const { data } = await schoolAdminApi.delete(`users/${id}`)
+      await schoolAdminApi.delete(`users/${id}`)
 
-      // dispatch(editUserReducer(data))
+      dispatch(deleteUserReducer(id))
     } catch ({ response }) {
       const { data } = response
       const errorMessage = data.message

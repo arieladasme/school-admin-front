@@ -21,6 +21,9 @@ export const usersSlice = createSlice({
         state.users[index] = payload
       }
     },
+    deleteUserReducer: (state, { payload }) => {
+      state.users = state.users.filter(user => user.id !== payload)
+    },
     waitingResponseReducer: (state, { payload }) => {
       state.waitingResponse = payload
     },
@@ -30,5 +33,11 @@ export const usersSlice = createSlice({
   },
 })
 
-export const { loadUsers, addUser, editUserReducer, waitingResponseReducer, loadError } =
-  usersSlice.actions
+export const {
+  loadUsers,
+  addUser,
+  editUserReducer,
+  deleteUserReducer,
+  waitingResponseReducer,
+  loadError,
+} = usersSlice.actions
