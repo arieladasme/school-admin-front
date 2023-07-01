@@ -4,7 +4,7 @@ import { CoursesPage } from '../../components/courses'
 import { Perfil, Attendance } from '../components'
 import { HomeLayout } from '../layout/HomeLayout'
 import { HomePage } from '../pages/HomePage'
-import { Subjects } from '../../components'
+import { SubjectsPage } from '../../components/subjects'
 
 export const HomeRoutes = () => {
   return (
@@ -16,7 +16,7 @@ export const HomeRoutes = () => {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/attendance" element={<Attendance />} />
-        <Route path="/subjects" element={<Subjects />} />
+        <Route path="/subjects" element={<SubjectsPage />} />
         <Route path="/courses" element={<CoursesPage />} />
       </Routes>
     </HomeLayout>

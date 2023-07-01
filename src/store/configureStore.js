@@ -5,6 +5,7 @@ import { persistReducer } from 'redux-persist'
 
 import { authSlice } from './auth'
 import { usersSlice } from './users'
+import { subjectsSlice } from './subjects/subjectsSlice'
 const persistConfig = {
   key: 'root',
   storage,
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
   users: usersSlice.reducer,
+  subjects: subjectsSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

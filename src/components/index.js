@@ -1,6 +1,5 @@
 export * from './AddButton'
 export * from './CheckingAuth'
-export * from './users/UsersPage'
-export * from './courses/ModalCourses'
+export * from './courses'
 export * from './subjects'
 export * from './users'

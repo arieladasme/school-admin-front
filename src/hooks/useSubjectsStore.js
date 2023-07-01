@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { schoolAdminApi } from '../api'
-import { addUser, loadUsers, loadError } from '../store/users/usersSlice'
+import { loadSubjects, loadError, addSubjects } from '../store/subjects/subjectsSlice'
 
 export const useSubjectsStore = () => {
-  const { users } = useSelector(state => state.users)
+  const { subjects } = useSelector(state => state.subjects)
   const dispatch = useDispatch()
 
   // Obtener todos los usuarios
-  const getAllUsers = async () => {
+  const getAllSubjects = async () => {
     try {
-      const { data } = await schoolAdminApi.get('users')
-      dispatch(loadUsers(data))
+      const { data } = await schoolAdminApi.get('subjects')
+      dispatch(loadSubjects(data))
     } catch (error) {
       console.log(error)
     }
@@ -21,7 +21,7 @@ export const useSubjectsStore = () => {
     try {
       const { data } = await schoolAdminApi.post('subjects', subject)
 
-      //  dispatch(addUser(data))
+      dispatch(addSubjects(data))
     } catch ({ response }) {
       const { data } = response
       const errorMessage = data.message
@@ -29,16 +29,16 @@ export const useSubjectsStore = () => {
         : data.error
         ? data.error
         : 'An error occurred'
-      //dispatch(loadError(errorMessage))
+      dispatch(loadError(errorMessage))
       console.log(errorMessage)
     }
   }
 
   return {
     // propiedades
-    users,
+    subjects,
     // metodos
-    getAllUsers,
+    getAllSubjects,
     createSubject,
   }
 }
