@@ -6,13 +6,20 @@ import { Add as AddIcon } from '@mui/icons-material'
 import { ModalUser, TableHeadUser, TableRowsUser } from './users/'
 import { useUsersStore } from '../hooks/useUsersStore'
 
+const initialForm = {
+  name: '',
+  email: '',
+  middleName: '',
+  lastName: '',
+  secondLastName: '',
+  rut: '',
+  role: '',
+}
+
 export const UsersPage = () => {
   const { errMsg } = useSelector(state => state.users)
   const [open, setOpen] = useState(false)
-  const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
-  })
+  const [formValues, setFormValues] = useState(initialForm)
 
   const [editingId, setEditingId] = useState(null)
   const { users, getAllUsers, createUser, editUser } = useUsersStore()
@@ -22,10 +29,7 @@ export const UsersPage = () => {
   }, [])
 
   const handleAddButtonClick = () => {
-    setFormValues({
-      name: '',
-      email: '',
-    })
+    setFormValues(initialForm)
     setEditingId(null)
     setOpen(true)
   }
@@ -34,17 +38,7 @@ export const UsersPage = () => {
     const userToEdit = users.find(user => user.id === id)
 
     if (userToEdit) {
-      setFormValues({
-        id: userToEdit.id,
-        name: userToEdit.name,
-        middleName: userToEdit.middleName,
-        lastName: userToEdit.lastName,
-        secondLastName: userToEdit.secondLastName,
-        email: userToEdit.email,
-        rut: userToEdit.rut,
-        role: userToEdit.role,
-      })
-
+      setFormValues({ ...userToEdit })
       setEditingId(id)
       setOpen(true)
     }

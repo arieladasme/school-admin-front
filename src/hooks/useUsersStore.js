@@ -21,10 +21,15 @@ export const useUsersStore = () => {
     try {
       const { data } = await schoolAdminApi.post('users', user)
       dispatch(addUser(data))
-    } catch (error) {
-      const errorMessage = error.response.data.message || 'An error occurred'
+    } catch ({ response }) {
+      const { data } = response
+      const errorMessage = data.message
+        ? data.message
+        : data.error
+        ? data.error
+        : 'An error occurred'
       dispatch(loadError(errorMessage))
-      console.log(error)
+      console.log(errorMessage)
     }
   }
 
@@ -34,11 +39,15 @@ export const useUsersStore = () => {
       const { data } = await schoolAdminApi.patch(`users/${user.id}`, user)
 
       dispatch(editUserReducer(data))
-      console.log({ data })
-    } catch (error) {
-      const errorMessage = error.response.data.message || 'An error occurred'
+    } catch ({ response }) {
+      const { data } = response
+      const errorMessage = data.message
+        ? data.message
+        : data.error
+        ? data.error
+        : 'An error occurred'
       dispatch(loadError(errorMessage))
-      console.log(error)
+      console.log(errorMessage)
     }
   }
 
