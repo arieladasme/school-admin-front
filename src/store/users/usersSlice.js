@@ -14,6 +14,13 @@ export const usersSlice = createSlice({
     addUser: (state, { payload }) => {
       state.users.push(payload)
     },
+    editUser: (state, { payload }) => {
+      const { id } = payload
+      const index = state.users.findIndex(user => user.id === id)
+      if (index !== -1) {
+        state.users[index] = payload
+      }
+    },
     waitingResponseReducer: (state, { payload }) => {
       state.waitingResponse = payload
     },
@@ -23,4 +30,4 @@ export const usersSlice = createSlice({
   },
 })
 
-export const { loadUsers, addUser, waitingResponseReducer, loadError } = usersSlice.actions
+export const { loadUsers, addUser, edit, waitingResponseReducer, loadError } = usersSlice.actions

@@ -16,11 +16,23 @@ export const useUsersStore = () => {
     }
   }
 
-  // Crear un usuario
+  // Crear usuario
   const createUser = async user => {
     try {
       const { data } = await schoolAdminApi.post('users', user)
       dispatch(addUser(data))
+    } catch (error) {
+      const errorMessage = error.response.data.message || 'An error occurred'
+      dispatch(loadError(errorMessage))
+      console.log(error)
+    }
+  }
+
+  // Editar usuario
+  const editUser = async user => {
+    try {
+      const { data } = await schoolAdminApi.patch(`users/${user.id}`, user)
+      // dispatch(editUserUser(data))
     } catch (error) {
       const errorMessage = error.response.data.message || 'An error occurred'
       dispatch(loadError(errorMessage))
@@ -34,5 +46,6 @@ export const useUsersStore = () => {
     // metodos
     getAllUsers,
     createUser,
+    editUser,
   }
 }

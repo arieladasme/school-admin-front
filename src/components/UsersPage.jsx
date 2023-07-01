@@ -15,7 +15,7 @@ export const UsersPage = () => {
   })
 
   const [editingId, setEditingId] = useState(null)
-  const { users, getAllUsers, createUser } = useUsersStore()
+  const { users, getAllUsers, createUser, editUser } = useUsersStore()
 
   useEffect(() => {
     if (users.length === 0) getAllUsers()
@@ -35,6 +35,7 @@ export const UsersPage = () => {
 
     if (userToEdit) {
       setFormValues({
+        id: userToEdit.id,
         name: userToEdit.name,
         middleName: userToEdit.middleName,
         lastName: userToEdit.lastName,
@@ -67,7 +68,7 @@ export const UsersPage = () => {
       formValues.rut = parseInt(formValues.rut)
       createUser(formValues)
     } else {
-      // editUser() //TODO: pendiente
+      editUser(formValues)
     }
     handleClose()
   }
