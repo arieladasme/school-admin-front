@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 
 import { Table, TableBody, TableContainer, Button } from '@mui/material'
 import { Add as AddIcon } from '@mui/icons-material'
-import { ModalUser, TableHeadUser, TableRowsUser } from './users/'
-import { useUsersStore } from '../hooks/useUsersStore'
+import { ModalUser, TableHeadUser, TableRowsUser } from './'
+import { useUsersStore } from '../../hooks/useUsersStore'
 
 const initialForm = {
   name: '',

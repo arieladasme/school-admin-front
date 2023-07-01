@@ -1,3 +1,4 @@
 export * from './ModalUser'
-export * from './TableRowsUser'
 export * from './TableHeadUser'
+export * from './TableRowsUser'
+export * from './UsersPage'

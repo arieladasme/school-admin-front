@@ -12,7 +12,7 @@ import {
   Button,
 } from '@mui/material'
 import { MoreVert, Favorite, Share, ExpandMore, AddCircleOutline } from '@mui/icons-material'
-import { ModalCourses } from './courses/ModalCourses'
+import { ModalCourses } from './ModalCourses'
 
 const courses = [
   { id: 1, code: 'AAA', teacherId: 5 },

@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { UsersPage, CoursesPage } from '../../components'
+import { UsersPage } from '../../components'
+import { CoursesPage } from '../../components/courses'
 import { Perfil, Attendance } from '../components'
 import { HomeLayout } from '../layout/HomeLayout'
 import { HomePage } from '../pages/HomePage'
