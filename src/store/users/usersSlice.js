@@ -14,7 +14,7 @@ export const usersSlice = createSlice({
     addUser: (state, { payload }) => {
       state.users.push(payload)
     },
-    editUser: (state, { payload }) => {
+    editUserReducer: (state, { payload }) => {
       const { id } = payload
       const index = state.users.findIndex(user => user.id === id)
       if (index !== -1) {
@@ -30,4 +30,5 @@ export const usersSlice = createSlice({
   },
 })
 
-export const { loadUsers, addUser, edit, waitingResponseReducer, loadError } = usersSlice.actions
+export const { loadUsers, addUser, editUserReducer, waitingResponseReducer, loadError } =
+  usersSlice.actions

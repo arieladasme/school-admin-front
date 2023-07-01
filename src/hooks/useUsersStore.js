@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { schoolAdminApi } from '../api'
-import { addUser, loadUsers, loadError } from '../store/users/usersSlice'
+import { addUser, loadUsers, loadError, editUserReducer } from '../store/users/usersSlice'
 
 export const useUsersStore = () => {
   const { users } = useSelector(state => state.users)
@@ -32,7 +32,9 @@ export const useUsersStore = () => {
   const editUser = async user => {
     try {
       const { data } = await schoolAdminApi.patch(`users/${user.id}`, user)
-      // dispatch(editUserUser(data))
+
+      dispatch(editUserReducer(data))
+      console.log({ data })
     } catch (error) {
       const errorMessage = error.response.data.message || 'An error occurred'
       dispatch(loadError(errorMessage))
