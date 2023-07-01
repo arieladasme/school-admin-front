@@ -51,6 +51,24 @@ export const useUsersStore = () => {
     }
   }
 
+  // Eliminar usuario
+  const deleteUser = async id => {
+    try {
+      const { data } = await schoolAdminApi.delete(`users/${id}`)
+
+      // dispatch(editUserReducer(data))
+    } catch ({ response }) {
+      const { data } = response
+      const errorMessage = data.message
+        ? data.message
+        : data.error
+        ? data.error
+        : 'An error occurred'
+      dispatch(loadError(errorMessage))
+      console.log(errorMessage)
+    }
+  }
+
   return {
     // propiedades
     users,
@@ -58,5 +76,6 @@ export const useUsersStore = () => {
     getAllUsers,
     createUser,
     editUser,
+    deleteUser,
   }
 }

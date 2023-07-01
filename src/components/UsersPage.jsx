@@ -22,7 +22,7 @@ export const UsersPage = () => {
   const [formValues, setFormValues] = useState(initialForm)
 
   const [editingId, setEditingId] = useState(null)
-  const { users, getAllUsers, createUser, editUser } = useUsersStore()
+  const { users, getAllUsers, createUser, editUser, deleteUser } = useUsersStore()
 
   useEffect(() => {
     if (users.length === 0) getAllUsers()
@@ -45,7 +45,8 @@ export const UsersPage = () => {
   }
 
   const handleDeleteButtonClick = id => {
-    setUsers(users.filter(user => user.id !== id))
+    deleteUser(id)
+    //setUsers(users.filter(user => user.id !== id))
   }
 
   const handleFormValueChange = event => {
