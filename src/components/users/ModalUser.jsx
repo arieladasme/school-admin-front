@@ -8,6 +8,7 @@ import {
   Radio,
   FormControlLabel,
   Alert,
+  Divider,
 } from '@mui/material'
 
 const style = {
@@ -44,6 +45,7 @@ export const ModalUser = ({
     >
       <Box sx={style}>
         <h2 id="simple-modal-title">Nuevo Usuario</h2>
+        <Divider sx={{ marginBottom: 2 }} />
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} columns={16}>
             <Grid item xs={8}>
@@ -113,6 +115,7 @@ export const ModalUser = ({
               <Alert severity="error">{errMsg}</Alert>
             </Grid>
           </Grid>
+          <Divider sx={{ marginBottom: 1 }} />
           <Button
             variant="contained"
             color="primary"
@@ -121,7 +124,12 @@ export const ModalUser = ({
           >
             {editingId ? 'Save Changes' : 'Guardar usuario'}
           </Button>
-          <Button variant="contained" color="secondary" onClick={handleClose}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleClose}
+            sx={{ marginLeft: 1 }}
+          >
             Cancelar
           </Button>
         </form>
