@@ -1,4 +1,5 @@
 export * from './useAuthStore'
+export * from './useCoursesStore'
 export * from './useForm'
 export * from './useSubjectsStore'
 export * from './useUsersStore'

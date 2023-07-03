@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 import { MoreVert, Favorite, Share, ExpandMore, AddCircleOutline } from '@mui/icons-material'
 import { ModalCourses } from './ModalCourses'
+import { useCoursesStore } from '../../hooks/'
 
 const courses = [
   { id: 1, code: 'AAA', teacherId: 5 },
@@ -23,10 +24,12 @@ const courses = [
 ]
 
 export const CoursesPage = () => {
+  const { createCourse } = useCoursesStore()
   const [open, setOpen] = useState(false)
   const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
+    code: '',
+    teacher: '',
+    students: [],
   })
 
   const handleFormValueChange = event => {
@@ -38,11 +41,20 @@ export const CoursesPage = () => {
 
   const handleAddButton = () => {
     setFormValues({
-      name: '',
-      email: '',
+      code: '',
+      teacher: '',
+      students: [],
     })
 
     setOpen(true)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log('creando', formValues)
+    createCourse(formValues)
+
+    // handleClose()
   }
 
   const handleClose = () => setOpen(false)
@@ -94,7 +106,7 @@ export const CoursesPage = () => {
           </Grid>
         ))}
       </Grid>
-      <ModalCourses {...{ open, handleClose, formValues, handleFormValueChange }} />
+      <ModalCourses {...{ open, handleClose, handleSubmit, formValues, handleFormValueChange }} />
     </>
   )
 }
