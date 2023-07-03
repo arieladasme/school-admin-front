@@ -4,15 +4,14 @@ import {
   Card,
   CardHeader,
   IconButton,
-  ListItem,
   CardContent,
   List,
   CardActions,
   Avatar,
   Button,
-  ListItemText,
+  Divider,
 } from '@mui/material'
-import { MoreVert, Favorite, Share, ExpandMore, AddCircleOutline } from '@mui/icons-material'
+import { MoreVert, Share, AddCircleOutline } from '@mui/icons-material'
 import { ModalCourses } from './ModalCourses'
 import { useCoursesStore } from '../../hooks/'
 
@@ -57,7 +56,6 @@ export const CoursesPage = () => {
   const handleClose = () => setOpen(false)
   return (
     <>
-      <div>CoursesPage</div>
       <Button
         onClick={handleAddButton}
         variant="contained"
@@ -66,7 +64,7 @@ export const CoursesPage = () => {
       >
         Crear curso
       </Button>
-
+      <Divider sx={{ margin: 2 }} />
       <Grid container justifyContent="center" spacing={2}>
         {courses.map(course => (
           <Grid key={Math.random()} item>
@@ -81,7 +79,7 @@ export const CoursesPage = () => {
                 title={course.subject.name}
                 subheader={`Docente: ${course.teacher.name}`}
               />
-
+              <Divider />
               <CardContent>
                 <List>
                   {course.students.map(student => (
