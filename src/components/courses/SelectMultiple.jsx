@@ -7,32 +7,37 @@ const ITEM_PADDING_TOP = 8
 
 export const SelectMultiple = ({ students, handleFormValueChange }) => {
   const theme = useTheme()
-  const [personName, setPersonName] = useState([])
+  const [studentName, setStudentName] = useState([])
 
   const handleChange = event => {
     const {
       target: { value },
     } = event
-    setPersonName(
+    setStudentName(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value
     )
-    handleFormValueChange(event)
+
+    const selectedIds = students
+      .filter(student => value.includes(student.name))
+      .map(student => student.id)
+
+    handleFormValueChange({ ...event, target: { ...event.target, value: selectedIds } })
   }
 
   const MenuProps = {
     PaperProps: {
       style: {
         maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
+        width: 150,
       },
     },
   }
 
-  function getStyles(name, personName, theme) {
+  const getStyles = (name, studentName, theme) => {
     return {
       fontWeight:
-        personName.indexOf(name) === -1
+        studentName.indexOf(name) === -1
           ? theme.typography.fontWeightRegular
           : theme.typography.fontWeightMedium,
     }
@@ -42,13 +47,11 @@ export const SelectMultiple = ({ students, handleFormValueChange }) => {
     <>
       <InputLabel id="students-label">Estudiantes</InputLabel>
       <Select
-        labelId="students-label"
-        id="studentsSelected"
         name="students"
         multiple
-        value={personName}
+        value={studentName}
         onChange={handleChange}
-        input={<OutlinedInput id="select-multiple-chip" label="Estudiantes" />}
+        input={<OutlinedInput label="Estudiantes" />}
         renderValue={selected => (
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
             {selected.map(value => (
@@ -62,7 +65,7 @@ export const SelectMultiple = ({ students, handleFormValueChange }) => {
           <MenuItem
             key={student.id}
             value={student.name}
-            style={getStyles(student.name, personName, theme)}
+            style={getStyles(student.name, studentName, theme)}
           >
             {student.name}
           </MenuItem>

@@ -31,7 +31,7 @@ export const CoursesPage = () => {
     teacher: '',
     students: [],
   })
-
+  console.log(formValues)
   const handleFormValueChange = event => {
     setFormValues({
       ...formValues,
