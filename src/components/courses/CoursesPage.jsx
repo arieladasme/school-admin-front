@@ -1,37 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Grid,
   Card,
   CardHeader,
   IconButton,
-  CardMedia,
+  ListItem,
   CardContent,
-  Typography,
+  List,
   CardActions,
   Avatar,
   Button,
+  ListItemText,
 } from '@mui/material'
 import { MoreVert, Favorite, Share, ExpandMore, AddCircleOutline } from '@mui/icons-material'
 import { ModalCourses } from './ModalCourses'
 import { useCoursesStore } from '../../hooks/'
 
-const courses = [
-  { id: 1, code: 'AAA', teacherId: 5 },
-  { id: 2, code: 'BBB', teacherId: 5 },
-  { id: 3, code: 'CCC', teacherId: 5 },
-  { id: 4, code: 'DDD', teacherId: 5 },
-  { id: 5, code: 'EEE', teacherId: 5 },
-]
-
 export const CoursesPage = () => {
-  const { createCourse } = useCoursesStore()
+  const { createCourse, getAllcourses, courses } = useCoursesStore()
   const [open, setOpen] = useState(false)
   const [formValues, setFormValues] = useState({
     code: '',
     teacher: '',
     students: [],
   })
-  console.log(formValues)
+
+  useEffect(() => {
+    if (courses.length === 0) getAllcourses()
+  }, [])
+
   const handleFormValueChange = event => {
     setFormValues({
       ...formValues,
@@ -72,34 +69,32 @@ export const CoursesPage = () => {
 
       <Grid container justifyContent="center" spacing={2}>
         {courses.map(course => (
-          <Grid key={course.id} item>
+          <Grid key={Math.random()} item>
             <Card>
               <CardHeader
-                avatar={<Avatar aria-label="recipe">R</Avatar>}
+                avatar={<Avatar aria-label="recipe">{course.subject.name[0]}</Avatar>}
                 action={
                   <IconButton aria-label="settings">
                     <MoreVert />
                   </IconButton>
                 }
-                title="Shrimp and Chorizo Paella"
-                subheader="September 14, 2016"
+                title={course.subject.name}
+                subheader={`Docente: ${course.teacher.name}`}
               />
-              <CardMedia image="/static/images/cards/paella.jpg" title="Paella dish" />
+
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal to cook together
-                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
-                </Typography>
+                <List>
+                  {course.students.map(student => (
+                    <CardHeader
+                      avatar={<Avatar aria-label="recipe">{student.name[0]}</Avatar>}
+                      title={student.name}
+                    />
+                  ))}
+                </List>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <Favorite />
-                </IconButton>
                 <IconButton aria-label="share">
                   <Share />
-                </IconButton>
-                <IconButton onClick={() => {}} aria-label="show more">
-                  <ExpandMore />
                 </IconButton>
               </CardActions>
             </Card>
