@@ -49,6 +49,7 @@ export const SelectMultiple = ({ students, handleFormValueChange }) => {
       <Select
         name="students"
         multiple
+        autoWidth
         value={studentName}
         onChange={handleChange}
         input={<OutlinedInput label="Estudiantes" />}

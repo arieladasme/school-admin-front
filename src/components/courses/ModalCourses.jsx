@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Modal, TextField, Box, Grid, MenuItem } from '@mui/material'
+import { Button, Modal, TextField, Box, Grid, MenuItem, Divider } from '@mui/material'
 import { useSubjectsStore, useUsersStore } from '../../hooks'
 
 import { SelectMultiple } from './SelectMultiple'
@@ -8,11 +8,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
+  width: 350,
   bgcolor: 'background.paper',
   border: '1px solid #000',
   boxShadow: 24,
   p: 2,
+  flexGrow: 1,
 }
 
 export const ModalCourses = ({
@@ -36,17 +37,13 @@ export const ModalCourses = ({
   }, [])
 
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="user form"
-      aria-describedby="user form"
-    >
+    <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
-        <h2 id="simple-modal-title">Nuevo curso</h2>
+        <h2 id="modal-title">Nuevo curso</h2>
+        <Divider sx={{ marginBottom: 3 }} />
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={2} columns={16}>
-            <Grid item xs={8}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
               <TextField
                 id="subjectSelected"
                 name="code"
@@ -63,7 +60,7 @@ export const ModalCourses = ({
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12}>
               <TextField
                 id="teacherSelected"
                 name="teacher"
@@ -80,7 +77,7 @@ export const ModalCourses = ({
                 ))}
               </TextField>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12}>
               <SelectMultiple
                 {...{
                   handleSubmit,
@@ -91,18 +88,28 @@ export const ModalCourses = ({
               />
             </Grid>
           </Grid>
+          <Divider sx={{ marginTop: 1 }} />
+          <Grid container rowSpacing={1}>
+            <Grid item xs={12} sx={{ marginTop: 1 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={!formValues.code || !formValues.teacher || !formValues.students[0]}
+              >
+                Agregar curso
+              </Button>
 
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            disabled={!formValues.code || !formValues.teacher || !formValues.students[0]}
-          >
-            Agregar curso
-          </Button>
-          <Button variant="contained" color="secondary" onClick={handleClose}>
-            Cancelar
-          </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClose}
+                sx={{ marginLeft: 1 }}
+              >
+                Cancelar
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </Box>
     </Modal>
